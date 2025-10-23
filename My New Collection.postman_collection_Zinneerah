@@ -1,0 +1,294 @@
+{
+	"info": {
+		"_postman_id": "8db140c1-2d98-4f53-b0d4-c058dc346618",
+		"name": "My New Collection",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49326578",
+		"_collection_link": "https://zinneerahimran-5725509.postman.co/workspace/c5f4af50-f3fa-4b28-813e-f7b4ed088ecb/collection/49326578-8db140c1-2d98-4f53-b0d4-c058dc346618?action=share&source=collection_link&creator=49326578"
+	},
+	"item": [
+		{
+			"name": "postman tutorial",
+			"item": [
+				{
+					"name": "post data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Samsung Galaxy m4\",\r\n        \"data\": {\r\n            \"color\": \"Purple\"\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{https://api.restful-api.dev/objects}}/objects",
+							"host": [
+								"{{https://api.restful-api.dev/objects}}"
+							],
+							"path": [
+								"objects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get data Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Log values from the response\r",
+									"console.log('Retrieved Object ID:', response.id);\r",
+									"console.log('Retrieved Object Name:', response.name);\r",
+									"\r",
+									"// Chai assertions\r",
+									"pm.test(\"Response status is 200 OK\", () => {\r",
+									"  pm.expect(pm.response).to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Object name matches the created one\", () => {\r",
+									"  const originalName = pm.collectionVariables.get('randomName');  // From POST request\r",
+									"  pm.expect(response.name).to.equal(originalName);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/objects/ff8081819782e69e0199f22d8d0776a0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"objects",
+								"ff8081819782e69e0199f22d8d0776a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put data",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const newName = 'UpdatedObject' + Math.random().toString(36).substring(7);\r",
+									"\r",
+									"pm.variables.set('newName', newName);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Log values from the response\r",
+									"console.log('Updated Object ID:', response.id);\r",
+									"console.log('Updated Object Name:', response.name);\r",
+									"\r",
+									"// Chai assertions\r",
+									"pm.test(\"Response status is 200 OK\", () => {\r",
+									"  pm.expect(pm.response).to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Updated name is as expected\", () => {\r",
+									"  pm.expect(response.name).to.equal(pm.variables.get('newName'));  \r",
+									"});\r",
+									"\r",
+									"// Failing test case\r",
+									"pm.test(\"Failing Test: Expect original data to match (this will fail after update)\", () => {\r",
+									"  const originalData = pm.collectionVariables.get('randomData'); \r",
+									"  pm.expect(response.data).to.equal(originalData);  \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"{{newName}}\",\r\n    \"data\": \"updated data\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/objects/ff8081819782e69e0199f22d8d0776a0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"objects",
+								"ff8081819782e69e0199f22d8d0776a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response\r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Log values from the response\r",
+									"console.log('Patched Object ID:', response.id);\r",
+									"console.log('Patched Object Data:', response.data);\r",
+									"\r",
+									"// Chai assertions\r",
+									"pm.test(\"Response status is 200 OK\", () => {\r",
+									"  pm.expect(pm.response).to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Data field is updated\", () => {\r",
+									"  pm.expect(response.data).to.equal(\"Partially updated data\");  \r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": \"partially updated data\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/objects/ff8081819782e69e0199f22d8d0776a0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"objects",
+								"ff8081819782e69e0199f22d8d0776a0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Parse the JSON response \r",
+									"const response = pm.response.json();\r",
+									"\r",
+									"// Log values from the response\r",
+									"console.log('Delete Response:', response);  \r",
+									"\r",
+									"// Chai assertions\r",
+									"pm.test(\"Response status is 200 or 204\", () => {\r",
+									"  pm.expect(pm.response.code).to.be.oneOf([200, 204]);  \r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/objects/ff8081819782e69e0199f22d8d0776a0",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"objects",
+								"ff8081819782e69e0199f22d8d0776a0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": ""
+		},
+		{
+			"key": "createdId",
+			"value": ""
+		}
+	]
+}

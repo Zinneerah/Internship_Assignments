@@ -1,7 +1,0 @@
-timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1761332310411,19,HTTP Request POST,201,Created,Thread Group 1-1,text,true,,285,316,1,1,http://localhost:3000/books,19,0,4
-1761332310436,11,HTTP Request GET,200,OK,Thread Group 1-1,text,true,,4054,153,1,1,http://localhost:3000/books,11,0,0
-1761332310449,15,HTTP Request-Put,200,OK,Thread Group 1-1,text,true,,283,325,1,1,http://localhost:3000/books/1,15,0,0
-1761332310467,3,HTTP Request,200,OK,Thread Group 1-1,text,true,,378,183,1,1,http://localhost:3000/books/authToken,3,0,0
-1761332310473,6,HTTP Request-Delete,200,OK,Thread Group 1-1,text,true,,251,321,1,1,http://localhost:3000/books/2,6,0,0
-1761332310481,3,HTTP Request-Get-verify delete,200,OK,Thread Group 1-1,text,true,,235,148,1,1,http://localhost:3000/,3,0,0

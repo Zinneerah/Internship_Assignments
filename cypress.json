@@ -1,0 +1,16 @@
+{
+    "watchForFileChanges": false,
+    "responseTimeout": 60000,
+    "screenshotOnRunFailure": true,
+    "video": true,
+    "chromeWebSecurity": false,
+    "reporter": "mochawesome",
+    "reporterOptions":{
+        "code": true,
+        "overwrite":false,
+        "reportFilename": "SauceDemo-Report",
+        "autoOpen": true,
+        "charts": true
+    }
+    
+}

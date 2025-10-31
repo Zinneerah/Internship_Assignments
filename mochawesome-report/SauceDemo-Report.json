@@ -1,0 +1,106 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-31T14:37:26.120Z",
+    "end": "2025-10-31T14:37:35.133Z",
+    "duration": 9013,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a71607d4-b3d6-4bc6-8750-f4ab47ff210b",
+      "title": "",
+      "fullFile": "cypress/integration/login_failure.js",
+      "file": "cypress/integration/login_failure.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "cfe77ab4-2363-4b0c-932e-70366eda41d1",
+          "title": "Login Failure Test",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should show error for invalid login",
+              "fullTitle": "Login Failure Test should show error for invalid login",
+              "timedOut": null,
+              "duration": 5157,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.loginInvalid('invaliduser', 'wrongpassword', 'Username and password do not match');",
+              "err": {},
+              "uuid": "a6f85527-a303-4c01-9603-360f83d0185c",
+              "parentUUID": "cfe77ab4-2363-4b0c-932e-70366eda41d1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a6f85527-a303-4c01-9603-360f83d0185c"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5157,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "SauceDemo-Report",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "code": true,
+        "overwrite": false,
+        "reportFilename": "SauceDemo-Report",
+        "autoOpen": true,
+        "charts": true
+      },
+      "version": "6.3.0"
+    }
+  }
+}

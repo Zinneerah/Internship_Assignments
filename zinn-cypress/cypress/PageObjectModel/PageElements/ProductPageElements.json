@@ -1,0 +1,11 @@
+{
+  "ProductPageLocators": {
+    "product_item": ".inventory_item",
+    "product_name": ".inventory_item_name",
+    "product_details_name": ".inventory_details_name",
+    "product_details_price": ".inventory_details_price",
+    "menu_button": "#react-burger-menu-btn",
+    "logout_link": "#logout_sidebar_link",
+    "title": ".title"
+  }
+}
